@@ -1,14 +1,14 @@
 import React from "react"
 import Header from '../components/Header';
+import Game from '../components/Game';
 import Footer from '../components/Footer';
-import Waldo from 'images/waldo.jpg'
 
 class App extends React.Component {
   render () {
     return (
       <div>
         <Header/>
-      <img src={Waldo} />
+      < Game/>
       <Footer/>
       </div>
     );
