@@ -22,9 +22,9 @@ const Game = () => {
 
   useEffect(() => {
     const handleClick = (e) => {
-      console.log(e.target.localName);
-      let topOffset = e.clientY;
-      let leftOffset = e.clientX;
+      console.log(e);
+      let topOffset = e.layerY;
+      let leftOffset = e.layerX;
       let targetElement = e.target.localName;
       if(targetElement === "img") {
       showWindow(topOffset, leftOffset);
