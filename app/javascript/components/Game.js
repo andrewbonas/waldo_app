@@ -22,14 +22,18 @@ const Game = () => {
 
   useEffect(() => {
     const handleClick = (e) => {
-      console.log(e);
-      console.log(e.screenX);
-      console.log(e.screenX);
+      console.log(e.target.localName);
       let topOffset = e.clientY;
       let leftOffset = e.clientX;
-
+      let targetElement = e.target.localName;
+      if(targetElement === "img") {
       showWindow(topOffset, leftOffset);
       console.log(clickMenu.current);
+      } else {
+      clickMenu.current = false;
+      forceUpdate();
+
+      }
     };
 
     document.addEventListener("click", handleClick);

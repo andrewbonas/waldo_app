@@ -1,6 +1,13 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  cursor: crosshair;
+}
 div {
   color: red;
 }
@@ -12,4 +19,19 @@ button {
 .pop-up {
   position: absolute;
   margin: 7px;
+}
+
+.char-options {
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.char-options a:hover {
+  background-color: lightcoral;
+  cursor: pointer;
 }
