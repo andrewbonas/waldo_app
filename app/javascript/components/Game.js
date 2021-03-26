@@ -23,16 +23,15 @@ const Game = () => {
   useEffect(() => {
     const handleClick = (e) => {
       console.log(e);
-      let topOffset = e.layerY;
-      let leftOffset = e.layerX;
+      let rect = e.target.getBoundingClientRect();
+      let topOffset = e.clientY - rect.left;
+      let leftOffset = e.clientX - rect.top;
       let targetElement = e.target.localName;
+      console.log(e.clientY, e.clientX);
       if(targetElement === "img") {
       showWindow(topOffset, leftOffset);
-      console.log(clickMenu.current);
       } else {
       clickMenu.current = false;
-      forceUpdate();
-
       }
     };
 
@@ -41,6 +40,8 @@ const Game = () => {
       document.removeEventListener("click", handleClick);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+
   return (
     <div>
       <div>
@@ -57,7 +58,7 @@ const Game = () => {
       </div>
       <img src={Waldo} />
     </div>
+    
   );
 };
-
 export default Game;
