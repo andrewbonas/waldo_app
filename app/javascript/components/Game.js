@@ -22,12 +22,10 @@ const Game = () => {
 
   useEffect(() => {
     const handleClick = (e) => {
-      console.log(e);
-      let rect = e.target.getBoundingClientRect();
-      let topOffset = e.clientY - rect.left;
-      let leftOffset = e.clientX - rect.top;
+      let topOffset = e.pageY
+      let leftOffset = e.pageX
       let targetElement = e.target.localName;
-      console.log(e.clientY, e.clientX);
+      console.log(e.pageX, e.pageY, e );
       if(targetElement === "img") {
       showWindow(topOffset, leftOffset);
       } else {
@@ -51,7 +49,7 @@ const Game = () => {
               className="pop-up"
               style={{ top: positionTop, left: positionLeft }}
             >
-              <PopUp />
+              <PopUp userClickTop ={positionTop} userClickLeft ={positionLeft} />
             </div>
           </div>
         )}

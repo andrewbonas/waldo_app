@@ -1,30 +1,42 @@
 import React, { useEffect, useReducer, useState} from "react";
 
-const PopUp = () => {
+const PopUp = (props) => {
 
+  const [charInfo, setCharInfo] = useState("");
+  const [receivedCharInfo, setReceivedCharInfo] = useState(false);
 
-  const [items, setItems] = useState("");
 
 useEffect(() =>  {
-  checkMatch(items);
+  if(receivedCharInfo) {
+    console.log('api call has run');
+    checkMatch();
+  }
 });
 
-const checkMatch = (items) => {
-  console.log(items);
+const checkMatch = () => {
+  let xGuess = props.userClickTop;
+  let yGuess = props.userClickLeft;
+  let xActual = charInfo.xCoor;
+  let yActual = charInfo.yCoor;
+  console.log(xGuess, yGuess, xActual, yActual);
+ if(xGuess >= xActual - 25 && xGuess <= xActual + 25){
+   if((yGuess >= yActual - 25 && yGuess <= yActual + 25)) {
+     console.log('you found me');
+   }
+ }
 };
     const handleClick = (e) => {
       e.preventDefault();
-      console.log(e);
       let targetId = e.target.dataset.id;
+      console.log(e);
       fetch(`/api/v1/characters/show/${targetId}`)
       .then(response => {
           return response.json()
       })
-      .then(data => setItems(data))
+      .then(data => setCharInfo(data))
+      .then(setReceivedCharInfo(true))
       .catch(error => console.log(error.message))
-
   }
-
 
   return (
     <div>

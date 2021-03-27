@@ -1,8 +1,8 @@
 characters = [
-  {name:'Waldo', found: false, xCoor: 580, yCoor: 300},
-  {name:'Wenda', found: false, xCoor: 722, yCoor: 315},
-  {name:'Whitebeard', found: false, xCoor: 258, yCoor: 287},
-  {name:'Odlaw', found: false, xCoor: 108, yCoor: 286}
+  {name:'Waldo', found: false, xCoor: 460, yCoor: 998},
+  {name:'Wenda', found: false, xCoor: 492, yCoor: 1247},
+  {name:'Whitebeard', found: false, xCoor: 444, yCoor: 441},
+  {name:'Odlaw', found: false, xCoor: 440, yCoor: 180}
 ]
 
 characters.each do |attributes|
