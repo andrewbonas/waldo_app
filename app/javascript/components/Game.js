@@ -7,14 +7,32 @@ import React, {
 } from "react";
 import Waldo from "images/waldo.jpg";
 import PopUp from "./PopMenu";
+import Timer from "./Timer";
 
 const Game = () => {
   const clickMenu = useRef(false);
   const [positionTop, setPositionTop] = useState(0);
   const [positionLeft, setPositionLeft] = useState(0);
   const [charsFound, setCharsFound] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
+  const [finishTime, setFinishTime] = useState(0);
 
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
+
+  useEffect(() => {
+    if (charsFound.length === 4) {
+      setGameOver(true);
+      if (finishTime > 0) {
+        console.log(finishTime);
+        let name = prompt("type name for Leaderboard");
+        setPlayerScore(name, finishTime);
+      }
+    }
+  });
+
+  const setPlayerScore = (name, finishTime) => {
+    console.log(name, finishTime);
+  };
 
   const showWindow = (topOffset, leftOffset) => {
     if (!clickMenu.current) {
@@ -65,7 +83,42 @@ const Game = () => {
           </div>
         )}
       </div>
-      <div>Characters found: {charsFound.length}/4</div>
+      <div className="counter">
+        Characters found: {charsFound.length}/4
+        <Timer
+          gameOver={gameOver}
+          finishTime={finishTime}
+          setFinishTime={setFinishTime}
+        />
+      </div>
+      <div
+        style={
+          charsFound.find((el) => el === "Waldo") ? { display: "block" } : {}
+        }
+        id="found-waldo"
+      >
+        {" "}
+      </div>
+      <div
+        style={
+          charsFound.find((el) => el === "Wenda") ? { display: "block" } : {}
+        }
+        id="found-wenda"
+      ></div>
+      <div
+        style={
+          charsFound.find((el) => el === "Whitebeard")
+            ? { display: "block" }
+            : {}
+        }
+        id="found-whitebeard"
+      ></div>
+      <div
+        style={
+          charsFound.find((el) => el === "Odlaw") ? { display: "block" } : {}
+        }
+        id="found-odlaw"
+      ></div>
       <img src={Waldo} />
     </div>
   );

@@ -1,8 +1,16 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$found-border: solid 5px rgb(58, 250, 58);
 html {
   font-family: Arial, Helvetica, sans-serif;
+
+}
+body {
+  border: solid black 1px;
+}
+header {
+  background-color: gray;
 }
 
 img {
@@ -16,7 +24,12 @@ div {
 button {
   color: green;
 }
-
+.counter {
+  position:absolute;
+  color: gray;
+  background-color: white;
+  border: solid black .5px;
+}
 .pop-up {
   position: absolute;
   margin: 7px;
@@ -35,4 +48,48 @@ button {
 .char-options a:hover {
   background-color: lightcoral;
   cursor: pointer;
+}
+
+#found-waldo {
+  position: absolute;
+  display: none;
+  border: $found-border;
+  border-radius: 5px;
+  height: 40px;
+  width: 25px;
+  top: 450px;
+  left: 980px;
+}
+
+#found-wenda {
+  position: absolute;
+  display: none;
+  border: $found-border;
+  border-radius: 5px;
+  height: 40px;
+  width: 25px;
+  top: 485px;
+  left: 1228px;
+}
+
+#found-whitebeard {
+  position: absolute;
+  display: none;
+  border: $found-border;
+  border-radius: 5px;
+  height: 40px;
+  width: 25px;
+  top: 430px;
+  left: 425px;
+}
+
+#found-odlaw {
+  position: absolute;
+  display: none;
+  border: $found-border;
+  border-radius: 5px;
+  height: 40px;
+  width: 25px;
+  top: 430px;
+  left: 165px;
 }
