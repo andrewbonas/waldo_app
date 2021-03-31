@@ -30,8 +30,30 @@ const Game = () => {
     }
   });
 
-  const setPlayerScore = (name, finishTime) => {
-    console.log(name, finishTime);
+  const setPlayerScore = (name, time) => {
+    if(name.length === 0) {
+      return
+    }
+    const body = {
+      name,
+      time,
+    }
+
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    let url = '/api/v1/players/create';
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {console.log(data)})
+    .catch(error => console.log(error.message));
   };
 
   const showWindow = (topOffset, leftOffset) => {
