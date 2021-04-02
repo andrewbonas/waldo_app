@@ -8,6 +8,8 @@ import React, {
 import Waldo from "images/waldo.jpg";
 import PopUp from "./PopMenu";
 import Timer from "./Timer";
+import Leaderboard from "./Leaderboard";
+
 
 const Game = () => {
   const clickMenu = useRef(false);
@@ -24,8 +26,9 @@ const Game = () => {
       setGameOver(true);
       if (finishTime > 0) {
         console.log(finishTime);
-        let name = prompt("type name for Leaderboard");
+        let name = prompt("type name for Leaderboard", "Less than 10 chars");
         setPlayerScore(name, finishTime);
+        window.location.reload();
       }
     }
   });
@@ -66,6 +69,7 @@ const Game = () => {
     }
     forceUpdate();
   };
+  
   useEffect(() => {
     const handleClick = (e) => {
       let topOffset = e.pageY;
@@ -112,7 +116,9 @@ const Game = () => {
           finishTime={finishTime}
           setFinishTime={setFinishTime}
         />
+      <Leaderboard/>
       </div>
+
       <div
         style={
           charsFound.find((el) => el === "Waldo") ? { display: "block" } : {}

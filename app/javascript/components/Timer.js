@@ -14,6 +14,8 @@ const Timer = (props) => {
   } = useStopwatch({ autoStart: true });
 
   useEffect(() => {
+    let test = minutes + ":" + seconds;
+    console.log(test); //edit this to api post request
     if (props.gameOver) {
       pause();
       if (minutes > 0) {

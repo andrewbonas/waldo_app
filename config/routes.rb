@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'characters/show/:id', to: 'characters#show'
       put 'characters/update/:id', to: 'characters#put'
       post 'players/create'
+      get 'players/index'
     end
   end
   root 'pages#index'
