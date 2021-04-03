@@ -7,10 +7,7 @@ const Timer = (props) => {
     minutes,
     hours,
     days,
-    isRunning,
-    start,
     pause,
-    reset,
   } = useStopwatch({ autoStart: true });
 
   useEffect(() => {

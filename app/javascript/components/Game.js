@@ -3,7 +3,6 @@ import React, {
   useState,
   useRef,
   useReducer,
-  useCallback,
 } from "react";
 import Waldo from "images/waldo.jpg";
 import PopUp from "./PopMenu";

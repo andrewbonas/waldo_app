@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 
 const PopUp = (props) => {
   const [charInfo, setCharInfo] = useState("");
