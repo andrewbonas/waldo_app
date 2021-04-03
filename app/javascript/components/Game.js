@@ -10,7 +10,6 @@ import PopUp from "./PopMenu";
 import Timer from "./Timer";
 import Leaderboard from "./Leaderboard";
 
-
 const Game = () => {
   const clickMenu = useRef(false);
   const [positionTop, setPositionTop] = useState(0);
@@ -25,8 +24,7 @@ const Game = () => {
     if (charsFound.length === 4) {
       setGameOver(true);
       if (finishTime > 0) {
-        console.log(finishTime);
-        let name = prompt("type name for Leaderboard", "Less than 10 chars");
+        let name = prompt("Type your name for the leader board:");
         setPlayerScore(name, finishTime);
         window.location.reload();
       }
@@ -34,29 +32,28 @@ const Game = () => {
   });
 
   const setPlayerScore = (name, time) => {
-    if(name.length === 0) {
-      return
+    if (name === null || name.length === 0) {
+      return;
     }
     const body = {
       name,
       time,
-    }
+    };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
-    let url = '/api/v1/players/create';
+    let url = "/api/v1/players/create";
     fetch(url, {
       method: "POST",
       headers: {
         "X-CSRF-Token": token,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {console.log(data)})
-    .catch(error => console.log(error.message));
+      .then((response) => {
+        return response.json();
+      })
+      .catch((error) => console.log(error.message));
   };
 
   const showWindow = (topOffset, leftOffset) => {
@@ -69,13 +66,12 @@ const Game = () => {
     }
     forceUpdate();
   };
-  
+
   useEffect(() => {
     const handleClick = (e) => {
       let topOffset = e.pageY;
       let leftOffset = e.pageX;
       let targetElement = e.target.localName;
-      console.log(e.pageX, e.pageY);
       if (targetElement === "img") {
         showWindow(topOffset, leftOffset);
         clickMenu.current = false;
@@ -116,7 +112,7 @@ const Game = () => {
           finishTime={finishTime}
           setFinishTime={setFinishTime}
         />
-      <Leaderboard/>
+        <Leaderboard />
       </div>
 
       <div

@@ -2,52 +2,107 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $found-border: solid 5px rgb(58, 250, 58);
+
 html {
   font-family: Arial, Helvetica, sans-serif;
+}
 
-}
 body {
-  border: solid black 1px;
+  margin: 0;
 }
+
 header {
-  background-color: gray;
+  background-color: lightblue;
+  height: 100%;
+  width: 1600px;
+  border: solid 1px lightblue;
+  color: rgb(64, 66, 66);
+  font-weight: 100;
 }
 
 img {
   cursor: crosshair;
   width: 1600px;
 }
-div {
-  color: red;
+
+.counter {
+  border-radius: 5px;
+  color: rgb(46, 45, 45);
+  position: absolute;
+  left: 2px;
+  background-color: white;
+  border: solid black 0.5px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.table-ctn {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+table,
+th,
+td {
+  width: 100%;
+}
+
+.title-name {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.button-ctn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 button {
-  color: green;
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 2px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgb(172, 182, 192);
 }
-.counter {
-  position:absolute;
-  color: gray;
-  background-color: white;
-  border: solid black .5px;
-}
+
 .pop-up {
   position: absolute;
   margin: 7px;
+  text-decoration: none;
 }
 
 .char-options {
   background-color: lightblue;
   display: flex;
+  text-decoration: none;
   flex-direction: column;
-  color: black;
-  border: 1px solid black;
+  border: 0.5px solid rgb(73, 73, 73);
   border-radius: 5px;
   padding: 2px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.char-options a {
+  text-decoration: none;
+  color: rgb(46, 45, 45);
 }
 
 .char-options a:hover {
   background-color: lightcoral;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 #found-waldo {
@@ -57,8 +112,8 @@ button {
   border-radius: 5px;
   height: 40px;
   width: 25px;
-  top: 450px;
-  left: 980px;
+  top: 434px;
+  left: 975px;
 }
 
 #found-wenda {
@@ -68,8 +123,8 @@ button {
   border-radius: 5px;
   height: 40px;
   width: 25px;
-  top: 485px;
-  left: 1228px;
+  top: 470px;
+  left: 1220px;
 }
 
 #found-whitebeard {
@@ -79,8 +134,8 @@ button {
   border-radius: 5px;
   height: 40px;
   width: 25px;
-  top: 430px;
-  left: 425px;
+  top: 415px;
+  left: 415px;
 }
 
 #found-odlaw {
@@ -90,10 +145,15 @@ button {
   border-radius: 5px;
   height: 40px;
   width: 25px;
-  top: 430px;
-  left: 165px;
+  top: 417px;
+  left: 152px;
 }
 
-.leaderboard {
-  display: abosolute
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 5px;
+  padding-top: 20px;
+  height: 20px;
 }

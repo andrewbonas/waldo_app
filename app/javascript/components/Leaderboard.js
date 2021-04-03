@@ -1,55 +1,70 @@
 import React, { useEffect, useRef, useState, useReducer } from "react";
+import Moment from "react-moment";
+import moment from "moment";
 
 const Leaderboard = () => {
   const [playersScore, setPlayersScore] = useState([]);
   const [displayLeaderboard, setDisplayLeaderboard] = useState(true);
 
-
   useEffect(() => {
-    let url = `/api/v1/players/index`
+    let url = `/api/v1/players/index`;
     fetch(url)
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
-        throw new Error('unable');
+        throw new Error("unable");
       })
-      .then(res => setPlayersScore(res))
-      .then(console.log(playersScore))
+      .then((res) => setPlayersScore(res))
       .catch((error) => console.log(error.message));
-    },[]);
+  }, []);
 
-    const toggleBoard = () => {
-      if(displayLeaderboard === false) {
+  const toggleBoard = () => {
+    if (displayLeaderboard === false) {
       setDisplayLeaderboard(true);
-      }else{ 
-        setDisplayLeaderboard(false);
-      }
+    } else {
+      setDisplayLeaderboard(false);
     }
+  };
 
   return (
     <div>
-      
-      <button onClick={toggleBoard}>Leaderboard</button>
-      {displayLeaderboard && ( 
-        <table className="leaderboard">
-      <thead>
-        <th>NAME</th>
-        <th>TIME</th>
-      </thead>
-      <tbody>
-      {(playersScore.length > 0) ? playersScore.slice(0,10).map((player, index) => {
-        return(
-        <tr key={index}>
-          <td>{player.name}</td>
-          <td>{player.time}</td>
-          </tr>
-      )}) : <tr><td>Loading...</td></tr> }
-    </tbody>
-    <button onClick={toggleBoard}>Close</button>
-    </table>
-    )}
-
+      <div className="button-ctn">
+        <button onClick={toggleBoard}>Leaderboard</button>
+      </div>
+      {displayLeaderboard && (
+        <div className="table-ctn">
+          <table className="leaderboard">
+            <thead>
+              <tr>
+                <th className="title-name">NAME</th>
+                <th>TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              {playersScore.length > 0 ? (
+                playersScore.slice(0, 10).map((player, index) => {
+                  let minutes = Math.floor(player.time / 60);
+                  let seconds = player.time - minutes * 60;
+                  return (
+                    <tr key={index}>
+                      <td>{player.name}</td>
+                      <td>
+                        {minutes}:{seconds}
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td>None</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+          <button onClick={toggleBoard}>Close</button>
+        </div>
+      )}
     </div>
   );
 };

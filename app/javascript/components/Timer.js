@@ -14,14 +14,14 @@ const Timer = (props) => {
   } = useStopwatch({ autoStart: true });
 
   useEffect(() => {
-    let test = minutes + ":" + seconds;
-    console.log(test); //edit this to api post request
     if (props.gameOver) {
       pause();
       if (minutes > 0) {
-        let minToSec = 60 / minutes;
+        let minToSec = 60 * minutes;
         props.setFinishTime(minToSec + seconds);
-      } else props.setFinishTime(seconds);
+      } else {
+        props.setFinishTime(seconds);
+      }
     }
   });
 
